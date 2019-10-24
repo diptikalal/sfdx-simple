@@ -27,7 +27,7 @@ node {
            // dk=bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:config:set defaultdevhubusername='dipti.kalal@extentia.com' --global
 
             // need to pull out assigned username
-            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json"
+            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername"
             printf rmsg
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)

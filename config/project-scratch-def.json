@@ -1,0 +1,12 @@
+{
+  "country": "IN",
+  "edition": "Developer",
+  "orgPreferences": {
+    "enabled": [
+      "S1DesktopEnabled"
+    ],
+    "disabled": []
+  },
+  "orgName": "Extentia",
+  "adminEmail": "kalaldipti7@example.com"
+}

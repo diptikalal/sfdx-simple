@@ -1,12 +1,10 @@
 {
+   "Company": "Demo Company",
   "country": "IN",
+  "LastName": "Demo",
   "edition": "Developer",
-  "orgPreferences": {
-    "enabled": [
-      "S1DesktopEnabled"
-    ],
-    "disabled": []
-  },
-   "orgName": "dipti.kalal@extentia.com",
-  "adminEmail": "kalaldipti7@example.com"
+  "Email": "kalaldipti7@example.com",
+"orgPreferences" : {
+        "enabled": ["S1DesktopEnabled"]
+    }
 }

@@ -27,8 +27,11 @@ node {
            // dk=bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:config:set defaultdevhubusername='dipti.kalal@extentia.com' --global
 
             // need to pull out assigned username
-            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --setdefaultusername=\"me@my.org\" --setdefaultdevhubusername=\"me@myhub.org\""
+            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create -f config/project-scratch-def.json --setdefaultusername"
            // printf rmsg
+    
+
+            
             println(rmsg)
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
@@ -45,6 +48,7 @@ node {
             }
             // assign permset
             rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
+            
             if (rc != 0) {
                 error 'permset:assign failed'
             }

@@ -6,5 +6,6 @@
   "Email": "kalaldipti7@example.com",
 "orgPreferences" : {
         "enabled": ["S1DesktopEnabled"]
-    }
+    },
+    "orgName": "my company"
 }

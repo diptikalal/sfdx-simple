@@ -10,7 +10,7 @@ node {
     def SFDC_HOST = env.SFDC_HOST_DH
     def JWT_KEY_CRED_ID = env.JWT_CRED_ID_DH
     def CONNECTED_APP_CONSUMER_KEY=env.CONNECTED_APP_CONSUMER_KEY_DH
-    def or
+    def defaultdevorg="my-hub-org"
 
     def toolbelt = tool 'toolbelt'
 
@@ -22,14 +22,14 @@ node {
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Create Scratch Org') {
 
-           rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\"  --setdefaultdevhubusername --setalias HubOrg"
+           rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\"  --setdefaultdevhubusername --setalias ${defaultdevorg}"
             
             if (rc != 0) { error 'hub org authorization failed' }
 
            // dk=bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:config:set defaultdevhubusername='dipti.kalal@extentia.com' --global
 
             // need to pull out assigned username
-            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create -a MyDevOrg -s -v me@myhub.org edition=Developer"
+            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --targetdevhubusername ${defaultdevorg} --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
             println(rmsg)
     
 

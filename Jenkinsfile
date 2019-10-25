@@ -21,19 +21,19 @@ node {
     withCredentials([file(credentialsId: JWT_KEY_CRED_ID, variable: 'jwt_key_file')]) {
         stage('Create Scratch Org') {
 
-           rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --setalias HubOrg --instanceurl ${SFDC_HOST}"
+           rc = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\"  --instanceurl ${SFDC_HOST} --setdefaultdevhubusername --setalias HubOrg"
 
             if (rc != 0) { error 'hub org authorization failed' }
 
            // dk=bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:config:set defaultdevhubusername='dipti.kalal@extentia.com' --global
 
             // need to pull out assigned username
-            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --targetdevhubusername HubOrg --setdefaultusername --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
-           // printf rmsg
+            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --targetdevhubusername HubOrg --definitionfile config/project-scratch-def.json --setalias ciorg --wait 10 --durationdays 1"
+            printf rmsg
     
 
             
-            println(rmsg)
+            //println(rmsg)
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }

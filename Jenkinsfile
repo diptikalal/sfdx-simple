@@ -28,7 +28,7 @@ node {
            // dk=bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:config:set defaultdevhubusername='dipti.kalal@extentia.com' --global
 
             // need to pull out assigned username
-            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername dipti.kalal@extentia.com --setalias my-scratch-org"
+            rmsg = bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername my-scratch-org"
 
 
             println(rmsg)

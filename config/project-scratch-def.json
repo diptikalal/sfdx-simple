@@ -1,11 +1,13 @@
 {
-   "Company": "Demo Company",
   "country": "IN",
-  "LastName": "Demo",
   "edition": "Developer",
-  "Email": "kalaldipti7@example.com",
-"orgPreferences" : {
-        "enabled": ["S1DesktopEnabled"]
+
+    "settings": {
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        }
     },
-    "orgName": "my company"
+
+  "orgName": "Extentia Information Technology",
+  "adminEmail": "dipti.kalal@extentia.com"
 }

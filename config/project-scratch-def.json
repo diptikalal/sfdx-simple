@@ -1,13 +1,10 @@
 {
-  "country": "IN",
+  "orgName": "Your Company",
   "edition": "Developer",
-
-    "settings": {
-        "lightningExperienceSettings": {
-            "enableS1DesktopEnabled": true
-        }
-    },
-
-  "orgName": "Extentia Information Technology",
-  "adminEmail": "dipti.kalal@extentia.com"
+  "orgPreferences": {
+    "enabled": [
+      "S1DesktopEnabled"
+    ],
+    "disabled": []
+  }
 }

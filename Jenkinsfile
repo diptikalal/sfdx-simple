@@ -28,10 +28,10 @@ node {
            /*del = bat returnStatus: true, script: "\"${toolbelt}\"  force:org:delete -u \"test-x8lu7eixutve@example.com\""
            println(del)*/
             
-           orglist=bat returnStatus: true, script: "\"${toolbelt}\" force:org:list --json"
+            list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
           
-            println(orglist.getClass())
-            printf orglist
+            println(list.getClass())
+            printf list
         
          /*rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     

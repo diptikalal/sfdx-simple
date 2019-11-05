@@ -25,7 +25,7 @@ node {
            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:auth:jwt:grant  --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
                   if (rc != 0) { error 'hub org authorization failed' }
             
-           del = bat returnStatus: true, script: "\"${toolbelt}\"  force:org:delete -u test-x8lu7eixutve@example.com
+           del = bat returnStatus: true, script: "\"${toolbelt}\"  force:org:delete -u \"test-x8lu7eixutve\@example.com\""
            println(del)
             
            orglist=bat returnStatus: true, script: "\"${toolbelt}\" force:org:list --json"

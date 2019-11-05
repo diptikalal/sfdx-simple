@@ -31,7 +31,7 @@ node {
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
           
             println(list.getClass())
-            printf list
+            println(list)
         
          /*rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     

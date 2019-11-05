@@ -26,10 +26,10 @@ node {
                   if (rc != 0) { error 'hub org authorization failed' }
             
            // dk=bat returnStatus: true, script: "\"${toolbelt}/sfdx\" force:config:set defaultdevhubusername='dipti.kalal@extentia.com' --global
-           rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=\"dipti.kalal@extentia.com\" --global"
+           rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     
             // need to pull out assigned username
-         rmsg = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --targetdevhubusername \"dipti.kalal@extentia.com\" --setalias my-scratch-org"
+         rmsg = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
 "
 
             println(rmsg)

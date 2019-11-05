@@ -30,7 +30,6 @@ node {
     
             // need to pull out assigned username
          rmsg = bat returnStatus: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
-"
 
             println(rmsg)
     

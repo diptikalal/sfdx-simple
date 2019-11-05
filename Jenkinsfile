@@ -29,7 +29,9 @@ node {
            println(del)*/
             
            orglist=bat returnStatus: true, script: "\"${toolbelt}\" force:org:list --json"
-           println(orglist)
+          
+            println(orglist.getClass())
+            printf orglist
         
          /*rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     

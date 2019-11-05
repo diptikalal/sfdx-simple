@@ -2,10 +2,9 @@
 {
   "orgName": "Extentia Information Technology",
   "edition": "Developer",
-  "orgPreferences": {
-    "enabled": [
-      "S1DesktopEnabled"
-    ],
-    "disabled": []
-  }
+   "settings": {
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        }
+    }
 }

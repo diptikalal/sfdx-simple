@@ -32,13 +32,13 @@ node {
             
             //to list orgs
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
-            println(list.getClass())
-            println(list)
+            //println(list.getClass())
+            //println(list)
             println("hello")
             printf list
-            def jsonSlurper = new JsonSlurperClassic()
-            def robj = jsonSlurper.parseText(list)
-            if (robj.status != "ok") { error 'error'}
+            //def jsonSlurper = new JsonSlurperClassic()
+            //def robj = jsonSlurper.parseText(list)
+           // if (robj.status != "ok") { error 'error'}
 
         
             //to set the defaultdev hub username

@@ -9,6 +9,7 @@ node {
     def SFDC_USERNAME
 
     def str1=env.cmd_list_org
+    def str2=env.cmd_create_org
     
     def HUB_ORG=env.HUB_ORG_DH
     def SFDC_HOST = env.SFDC_HOST_DH
@@ -39,21 +40,22 @@ node {
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(ajson)
             if (robj.status != 0) { error ' failed:'}
-            println(robj.result.nonScratchOrgs)
+           
             
      
             //to set the defaultdev hub username
-             /*rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+             rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
-            println("hello")
-            println(''rmsg)
-            def jsonSlurper = new JsonSlurperClassic()
-            def robj = jsonSlurper.parseText(rmsg)
-            if (robj.status != 0) { error 'org creation failed: ' + robj.message }
-            SFDC_USERNAME=robj.result.username
-            robj = null
+            bjson=rmsg-str2
+            println(bjson)
+            //def jsonSlurper = new JsonSlurperClassic()
+            def extstr = jsonSlurper.parseText(bjson)
+            if (extstr.status != 0) { error ' failed:'}
+            println(extstr.result.username)
+            SFDC_USERNAME=extstr.result.username
+            extstr = null
 
     
 

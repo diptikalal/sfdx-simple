@@ -39,7 +39,7 @@ node {
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(ajson)
             if (robj.status != 0) { error ' failed:'}
-            println("passed")
+            println(robj.result.nonScratchOrgs)
             
      
             //to set the defaultdev hub username

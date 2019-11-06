@@ -1,5 +1,7 @@
 #!groovy
 import groovy.json.JsonSlurper 
+import groovy.json.JsonSlurperClassic
+
 node {
 
     def BUILD_NUMBER=env.BUILD_NUMBER
@@ -33,9 +35,11 @@ node {
             println(list.getClass())
             println(list)
             println("hello")
-            def jsonSlurper = new JsonSlurper()
+            printf list
+            def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(list)
-            if (robj.status != 0) { println("error") }
+            if (robj.status != "ok") { error 'error'}
+
         
             //to set the defaultdev hub username
            /* rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"

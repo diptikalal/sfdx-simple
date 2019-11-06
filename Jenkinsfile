@@ -37,7 +37,7 @@ node {
             println("hello")
             //printf list
             def jsonSlurper = new JsonSlurperClassic()
-            //def robj = jsonSlurper.parseText(list)
+            def robj = jsonSlurper.parseText(list)
            // if (robj.status != "ok") { error 'error'}
 
         

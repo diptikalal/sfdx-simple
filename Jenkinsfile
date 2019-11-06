@@ -35,8 +35,8 @@ node {
             //println(list.getClass())
             //println(list)
             println("hello")
-            printf list
-            //def jsonSlurper = new JsonSlurperClassic()
+            //printf list
+            def jsonSlurper = new JsonSlurperClassic()
             //def robj = jsonSlurper.parseText(list)
            // if (robj.status != "ok") { error 'error'}
 

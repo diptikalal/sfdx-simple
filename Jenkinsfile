@@ -45,10 +45,10 @@ node {
      
             println("hello")
             //to set the defaultdev hub username
-             rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+            // rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     
             // to create the scratch org
-            /*rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
             bjson=rmsg-str2
             println(bjson)
             //def jsonSlurper = new JsonSlurperClassic()
@@ -56,7 +56,7 @@ node {
             if (extstr.status != 0) { error ' failed:'}
             println(extstr.result.username)
             SFDC_USERNAME=extstr.result.username
-            extstr = null*/
+            extstr = null
         }
 
         stage('Push To Test Org') {

@@ -38,8 +38,9 @@ node {
     
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
+            println("hello")
             println(rmsg.getClass())
-            println(rmsg)
+           // println(rmsg)
             // printf rmsg
     
 

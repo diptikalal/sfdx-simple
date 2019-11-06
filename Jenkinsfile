@@ -1,5 +1,5 @@
 #!groovy
-import groovy.json.JsonSlurper 
+
 import groovy.json.JsonSlurperClassic
 
 node {
@@ -35,23 +35,24 @@ node {
             //to list orgs
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
             //println(list.getClass())
-            ajson=list-str1
+            /*ajson=list-str1
             println(ajson)
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(ajson)
             if (robj.status != 0) { error ' failed:'}
             println(robj.result.nonScratchOrgs)
+            robj=null*/
             
      
             println("hello")
             //to set the defaultdev hub username
-            // rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+            rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
             bjson=rmsg-str2
             println(bjson)
-            //def jsonSlurper = new JsonSlurperClassic()
+            def jsonSlurper = new JsonSlurperClassic()
             def extstr = jsonSlurper.parseText(bjson)
             if (extstr.status != 0) { error ' failed:'}
             println(extstr.result.username)

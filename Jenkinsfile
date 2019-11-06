@@ -33,8 +33,8 @@ node {
             //to list orgs
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
             //println(list.getClass())
-            var = "'" +list+ "'"
-            println(var)
+            printf(list)
+           
             
      
             //to set the defaultdev hub username

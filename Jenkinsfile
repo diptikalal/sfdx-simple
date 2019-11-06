@@ -33,15 +33,17 @@ node {
             //to list orgs
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
             //println(list.getClass())
-            println(list)
+            var = "'" +list+ "'"
+            println(var)
+            
      
             //to set the defaultdev hub username
-             rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+             /*rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
     
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
             println("hello")
-            println(rmsg)
+            println(''rmsg)
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(rmsg)
             if (robj.status != 0) { error 'org creation failed: ' + robj.message }

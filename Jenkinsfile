@@ -36,8 +36,10 @@ node {
             //println(list.getClass())
             ajson=list-str1
             println(ajson)
-           
-           
+            def jsonSlurper = new JsonSlurperClassic()
+            def robj = jsonSlurper.parseText(ajson)
+            if (robj.status != 0) { error ' failed:'}
+            println("passed")
             
      
             //to set the defaultdev hub username

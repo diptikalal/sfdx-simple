@@ -33,7 +33,7 @@ node {
             //to list orgs
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
             //println(list.getClass())
-            printf('%05d\n',list)
+            printf('%s',list)
            
            
             

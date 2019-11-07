@@ -34,9 +34,10 @@ node {
             
             //to list orgs
             list = bat returnStdout: true, script: "\"${toolbelt}\" force:org:list --json"
+            println(list)
             //println(list.getClass())
             /*ajson=list-str1
-            println(ajson)
+            
             def jsonSlurper = new JsonSlurperClassic()
             def robj = jsonSlurper.parseText(ajson)
             if (robj.status != 0) { error ' failed:'}
@@ -46,7 +47,7 @@ node {
             
             println("hello")
             //to set the defaultdev hub username
-            rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+            //rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
             /*
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
@@ -61,7 +62,8 @@ node {
         }
 
         stage('Push To Test Org') {
-            SFDC_USERNAME="test-pporb5tder72@example.com"
+            //SFDC_USERNAME="test-pporb5tder72@example.com"
+            SFDC_USERNAME="test-dg82n9rshd96@example.com"
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'

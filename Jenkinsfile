@@ -5,7 +5,7 @@ import groovy.json.JsonSlurperClassic
 node {
 
     def BUILD_NUMBER=env.BUILD_NUMBER
-    def RUN_ARTIFACT_DIR="tests/${BUILD_NUMBER}"
+    def RUN_ARTIFACT_DIR="${BUILD_NUMBER}"
     def SFDC_USERNAME
 
     def str1=env.cmd_list_org
@@ -79,11 +79,14 @@ node {
         }
 
         stage('Run Apex Test') {
-            bat "md ${RUN_ARTIFACT_DIR}"
-            timeout(time: 120, unit: 'SECONDS') {
+            dir('tests')
+            {
+                bat "md ${RUN_ARTIFACT_DIR}"
+                timeout(time: 120, unit: 'SECONDS') {
                 rc = bat returnStatus: true, script: "\"${toolbelt}\" force:apex:test:run --testlevel RunLocalTests --outputdir ${RUN_ARTIFACT_DIR} --resultformat tap --targetusername ${SFDC_USERNAME}"
                 if (rc != 0) {
                     error 'apex test run failed'
+                }
                 }
             }
         }

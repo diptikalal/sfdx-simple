@@ -62,12 +62,14 @@ node {
         }
 
         stage('Push To Test Org') {
-            //SFDC_USERNAME="test-pporb5tder72@example.com"
-            SFDC_USERNAME="test-dg82n9rshd96@example.com"
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+            SFDC_USERNAME="test-pporb5tder72@example.com"
+           // SFDC_USERNAME="test-dg82n9rshd96@example.com"
+            /*rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
-            }
+            }*/
+            
+            rp = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:org:open"
             // assign permset
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
             

@@ -69,7 +69,7 @@ node {
                 error 'push failed'
             }*/
             
-            rp = bat returnStatus: true, script: "\"${toolbelt}\" sfdx force:org:open"
+            rp = bat returnStatus: true, script: "\"${toolbelt}\" force:org:open"
             // assign permset
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
             

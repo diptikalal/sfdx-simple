@@ -44,7 +44,7 @@ node {
             println(robj.result.nonScratchOrgs)
             robj=null*/
             
-            println($WORKSPACE)
+            println(env.WORKSPACE)
             println("hello")
    
             //to set the defaultdev hub username

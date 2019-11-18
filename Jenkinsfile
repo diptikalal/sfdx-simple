@@ -46,6 +46,7 @@ node {
             
             
             println("hello")
+        }
             //to set the defaultdev hub username
             //rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
             /*
@@ -61,13 +62,13 @@ node {
             extstr = null*/
         }
 
-        stage('Push To Test Org') {
+       /* stage('Push To Test Org') {
             SFDC_USERNAME="test-pporb5tder72@example.com"
            // SFDC_USERNAME="test-dg82n9rshd96@example.com"
             /*rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {
                 error 'push failed'
-            }*/
+            }
             
             rp = bat returnStatus: true, script: "\"${toolbelt}\" force:org:open --targetusername ${SFDC_USERNAME}"
             // assign permset
@@ -89,7 +90,7 @@ node {
                 }
                 }
             }
-        }
+        }*/
 
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'

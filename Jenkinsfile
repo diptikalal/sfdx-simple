@@ -45,14 +45,15 @@ node {
             robj=null*/
             
             println(env.WORKSPACE)
-            println("hello")
+            def org_create=env.WORKSPACE+str2
+            println(org_create)
    
             //to set the defaultdev hub username
             rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
             // to create the scratch org
-           // rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
-            bjson=rmsg-str2
+           rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
+            bjson=rmsg-org_create
             println(bjson)
             def jsonSlurper = new JsonSlurperClassic()
             def extstr = jsonSlurper.parseText(bjson)

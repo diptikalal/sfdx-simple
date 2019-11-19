@@ -47,7 +47,7 @@ node {
             println(env.WORKSPACE)
             def org_create=env.WORKSPACE+str2
             println(org_create)
-        }
+     
             //to set the defaultdev hub username
            rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
@@ -91,7 +91,7 @@ node {
                 }
                 }
             }
-        }*/
+        }
 
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'

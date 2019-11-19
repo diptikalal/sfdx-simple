@@ -81,6 +81,7 @@ node {
         }
 
         stage('Run Apex Test') {
+            SFDC_USERNAME="test-1usebkhr6ilc@example.com"
             dir('tests')
             {
                 bat "md ${RUN_ARTIFACT_DIR}"
@@ -92,7 +93,12 @@ node {
                 }
             }
         }
-
+       stages('delete an org')
+        {
+            SFDC_USERNAME="test-1usebkhr6ilc@example.com"
+             del = bat returnStatus: true, script: "\"${toolbelt}\" force:org:delete --targetusername ${SFDC_USERNAME} --noprompt"
+        }    
+            
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'
         }

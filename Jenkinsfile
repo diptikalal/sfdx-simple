@@ -61,7 +61,7 @@ node {
             println(extstr.result.username)
             SFDC_USERNAME=extstr.result.username
             extstr = null
-        }*/
+        }
 
        stage('Push To Test Org') {
             SFDC_USERNAME="test-pporb5tder72@example.com"
@@ -91,7 +91,7 @@ node {
                 }
                 }
             }
-        }
+        }*/
 
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'

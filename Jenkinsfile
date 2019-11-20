@@ -47,9 +47,9 @@ node {
             println(env.WORKSPACE)
             def org_create=env.WORKSPACE+str2
             println(org_create)
-        }
+        
             //to set the defaultdev hub username
-          /* rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+          rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
             // to create the scratch org
            rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
@@ -61,7 +61,10 @@ node {
             println(extstr.result.username)
             SFDC_USERNAME=extstr.result.username
             extstr = null
-        }*/
+            
+           rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package=04t1C000000Apj5 --targetusername ${SFDC_USERNAME}"
+            println(rc)
+        }
 
        stage('Push To Test Org') {
             SFDC_USERNAME="test-1usebkhr6ilc@example.com"

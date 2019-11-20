@@ -66,7 +66,7 @@ node {
             
            SFDC_USERNAME="test-abpahx0nqcgv@example.com"
           
-           rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package "04t1C000000Apj5" --targetusername ${SFDC_USERNAME}"
+           rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package 04t1C000000Apj5 --targetusername ${SFDC_USERNAME}"
             println("health cloud")
             println(rc)
            

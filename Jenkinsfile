@@ -62,13 +62,13 @@ node {
             SFDC_USERNAME=extstr.result.username
             println("sfdc_username")
             println(SFDC_USERNAME)
-            extstr = null
+            extstr = null*/
             
            SFDC_USERNAME="test-abpahx0nqcgv@example.com"
           
-           rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package 04t1C000000Apj5 --targetusername ${SFDC_USERNAME}"
+           rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package 04t1C000000Y1Qe --targetusername ${SFDC_USERNAME}"
             println("health cloud")
-            println(rc)*/
+            println(rc)
             
            SFDC_USERNAME="test-abpahx0nqcgv@example.com"
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install:report -i 0Hf0w00000005eLCAQ -u ${SFDC_USERNAME}"

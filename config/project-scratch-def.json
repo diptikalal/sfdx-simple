@@ -3,6 +3,7 @@
   "country": "IN",
   "orgName": "Extentia Information Technology",
   "edition": "Developer",
+   "features": ["ContactsToMultipleAccounts", "HealthCloudUser","communities"],
    "settings": {
         "lightningExperienceSettings": {
             "enableS1DesktopEnabled": true

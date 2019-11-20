@@ -49,7 +49,7 @@ node {
             println(org_create)
         
             //to set the defaultdev hub username
-          rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+            rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
@@ -60,11 +60,14 @@ node {
             if (extstr.status != 0) { error ' failed:'}
             println(extstr.result.username)
             SFDC_USERNAME=extstr.result.username
-            println '${SFDC_USERNAME}'
+            println("sfdc_username")
+            println(SFDC_USERNAME)
             extstr = null
-            SFDC_USERNAME="test-ynjcjp3zm2d5@example.com"
+          
            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package=04t1C000000Apj5 --targetusername ${SFDC_USERNAME}"
+            println("health cloud")
             println(rc)
+           
         }
 
        stage('Push To Test Org') {

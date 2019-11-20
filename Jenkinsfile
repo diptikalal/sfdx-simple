@@ -52,7 +52,7 @@ node {
           rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
             // to create the scratch org
-           rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
+            rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
             bjson=rmsg-org_create
             println(bjson)
             def jsonSlurper = new JsonSlurperClassic()
@@ -60,14 +60,15 @@ node {
             if (extstr.status != 0) { error ' failed:'}
             println(extstr.result.username)
             SFDC_USERNAME=extstr.result.username
+            println '${SFDC_USERNAME}'
             extstr = null
-            
+            SFDC_USERNAME="test-ynjcjp3zm2d5@example.com"
            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package=04t1C000000Apj5 --targetusername ${SFDC_USERNAME}"
             println(rc)
         }
 
        stage('Push To Test Org') {
-            SFDC_USERNAME="test-1usebkhr6ilc@example.com"
+            //SFDC_USERNAME="test-1usebkhr6ilc@example.com"
            // SFDC_USERNAME="test-dg82n9rshd96@example.com"
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
             if (rc != 0) {

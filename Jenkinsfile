@@ -70,6 +70,7 @@ node {
             println("health cloud")
             println(rc)*/
             
+           SFDC_USERNAME="test-abpahx0nqcgv@example.com"
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install:report -i 0Hf0w00000005eLCAQ -u ${SFDC_USERNAME}"
            println(rc)
         }

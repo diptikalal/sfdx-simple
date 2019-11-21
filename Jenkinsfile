@@ -8,6 +8,7 @@ node('master') {
     def RUN_ARTIFACT_DIR="${BUILD_NUMBER}"
     def SFDC_USERNAME
     def var11
+    def var12
     
     def str1=env.cmd_list_org
     def str2=env.cmd_create_org
@@ -75,10 +76,11 @@ node('master') {
             {
                 bat 'dir'
                 bat '''
-                set /p %var11%=<sfdc.txt
+                set /p var11=<sfdc.txt
                 echo %var11%
+                set var12=var11
                 '''
-                println(var11)
+            println(var12)
 
             }
         }

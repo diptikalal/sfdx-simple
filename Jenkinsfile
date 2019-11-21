@@ -79,7 +79,7 @@ node('master') {
         }
 
      stage('Push To Test Org') {
-            {
+
                 bat 'dir'
                 bat '''
                 set /p var11=<sfdc.txt
@@ -103,7 +103,7 @@ node('master') {
             if (rc != 0) {
                 error 'permset:assign failed'
             }*/
-        }
+        
 
         stage('Run Apex Test') {
             SFDC_USERNAME="test-1usebkhr6ilc@example.com"

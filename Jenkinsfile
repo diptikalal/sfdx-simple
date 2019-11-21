@@ -84,8 +84,10 @@ node('master') {
             }
         }
 
-     /*  stage('Push To Test Org') {
-           def refernce_var=SFDC_USERNAME
+     stage('Push To Test Org') {
+            bat '''
+            echo %var11%
+            '''
             //SFDC_USERNAME="test-1usebkhr6ilc@example.com"
            // SFDC_USERNAME="test-dg82n9rshd96@example.com"
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${refernce_var}"
@@ -93,7 +95,7 @@ node('master') {
                 error 'push failed'
             }
        }    
-            /*rp = bat returnStatus: true, script: "\"${toolbelt}\" force:org:open --targetusername ${SFDC_USERNAME}"
+            rp = bat returnStatus: true, script: "\"${toolbelt}\" force:org:open --targetusername ${SFDC_USERNAME}"
             // assign permset
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
             
@@ -119,7 +121,7 @@ node('master') {
         {
             SFDC_USERNAME="test-1usebkhr6ilc@example.com"
              del = bat returnStatus: true, script: "\"${toolbelt}\" force:org:delete --targetusername ${SFDC_USERNAME} --noprompt"
-        }   */
+        }   
             
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'

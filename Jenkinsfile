@@ -7,7 +7,7 @@ node('master') {
     def BUILD_NUMBER=env.BUILD_NUMBER
     def RUN_ARTIFACT_DIR="${BUILD_NUMBER}"
     def SFDC_USERNAME
-    //def var11
+    def var11
 
     def str1=env.cmd_list_org
     def str2=env.cmd_create_org

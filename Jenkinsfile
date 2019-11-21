@@ -73,8 +73,8 @@ node('master') {
             }
             else
             {
-                bat "set /p ${refernce_var}=<sfdc.txt"
-               println(reference_var)
+                bat "set /p var=<sfdc.txt"
+                bat "echo var"
             }
         }
 

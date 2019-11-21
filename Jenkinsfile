@@ -84,9 +84,7 @@ node('master') {
                 bat '''
                 set /p var11=<sfdc.txt
                 echo %var11%
-                set var12=var11
-               sfdx force:org:open --targetusername %var11%
-               sfdx force:source:push --targetusername %var11%
+                sfdx force:source:push --targetusername %var11%
                 '''
             }
             //SFDC_USERNAME="test-1usebkhr6ilc@example.com"
@@ -102,7 +100,7 @@ node('master') {
             
             if (rc != 0) {
                 error 'permset:assign failed'
-            }*/
+            }
         
 
         stage('Run Apex Test') {
@@ -122,7 +120,7 @@ node('master') {
         {
             SFDC_USERNAME="test-1usebkhr6ilc@example.com"
              del = bat returnStatus: true, script: "\"${toolbelt}\" force:org:delete --targetusername ${SFDC_USERNAME} --noprompt"
-        }   
+        } */;
             
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'

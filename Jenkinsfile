@@ -67,8 +67,9 @@ node('master') {
             println("sfdc_username")
             println(SFDC_USERNAME)*/
             SFDC_USERNAME="mnd dipti"
+                println(SFDC_USERNAME)
             extstr = null
-                bat 'echo ${SFDC_USERNAME} >> sfdc.txt'
+                bat 'echo ${SFDC_USERNAME} > sfdc.txt'
             }
             else
             {

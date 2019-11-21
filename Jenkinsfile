@@ -74,7 +74,7 @@ node('master') {
             {
                 bat 'dir'
                 bat '''
-                set /P var11=<sfdc.txt
+                set /p var11=<sfdc.txt
                 echo %var11%
                 '''
                 println(var11)

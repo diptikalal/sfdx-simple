@@ -74,23 +74,24 @@ node('master') {
             }
             else
             {
+                prineln("In No part")
+            }
+        }
+
+     stage('Push To Test Org') {
+            {
                 bat 'dir'
                 bat '''
                 set /p var11=<sfdc.txt
                 echo %var11%
                 set var12=var11
                sfdx force:org:open --targetusername %var11%
+               sfdx force:source:push --targetusername %var11%
                 '''
             }
-        }
-
-     stage('Push To Test Org') {
-            bat '''
-            echo %var11%
-            '''
             //SFDC_USERNAME="test-1usebkhr6ilc@example.com"
            // SFDC_USERNAME="test-dg82n9rshd96@example.com"
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${refernce_var}"
+            /*rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${refernce_var}"
             if (rc != 0) {
                 error 'push failed'
             }
@@ -101,7 +102,7 @@ node('master') {
             
             if (rc != 0) {
                 error 'permset:assign failed'
-            }
+            }*/
         }
 
         stage('Run Apex Test') {

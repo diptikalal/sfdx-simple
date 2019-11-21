@@ -74,7 +74,7 @@ node('master') {
             }
             else
             {
-                prineln("In No part")
+                println("In No part")
             }
         }
 

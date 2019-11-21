@@ -73,7 +73,8 @@ node('master') {
             }
             else
             {
-                bat 'set /p Build=<sfdc.txt'         
+                bat "set /p ${refernce_var}=<sfdc.txt"
+               println(reference_var)
             }
         }
 

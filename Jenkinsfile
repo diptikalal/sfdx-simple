@@ -73,7 +73,7 @@ node('master') {
             }
             else
             {
-                bat "set /p var=<'C:\Program Files (x86)\Jenkins\workspace\sample-pipeline\sfdc.txt'"
+                bat "set /p var=${env.WORKSPACE}\sfdc.txt"
                 println(var)
                 //bat "echo %var%"
             }

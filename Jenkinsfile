@@ -73,8 +73,9 @@ node('master') {
             }
             else
             {
-                bat "set /p var = < sfdc.txt"
-                bat "echo %var%"
+                bat "set /p var=<sfdc.txt"
+                println(var)
+                //bat "echo %var%"
             }
         }
 

@@ -78,7 +78,10 @@ node('master') {
                 echo %var11%
                 '''
                 //println(var11)
-                bat "echo %var11%"
+                bat '''
+                echo off
+                echo %var11%
+                '''
             }
         }
 

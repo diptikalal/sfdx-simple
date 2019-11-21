@@ -51,6 +51,7 @@ node('master') {
         
             if(env.Create_scratch_org=="Yes")
             {    
+             /*   
             //to set the defaultdev hub username
             rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
@@ -64,13 +65,14 @@ node('master') {
             println(extstr.result.username)
             SFDC_USERNAME=extstr.result.username
             println("sfdc_username")
-            println(SFDC_USERNAME)
+            println(SFDC_USERNAME)*/
+            SFDC_USERNAME="mnd dipti"
             extstr = null
-            refernce_var=SFDC_USERNAME
+            bat 'echo env.SFDC_USERNAME >> sfdc.txt'
             }
             else
             {
-            println(refernce_var)
+                bat 'set /p Build=<sfdc.txt'         
             }
         }
 

@@ -48,7 +48,8 @@ node('master') {
             println(env.WORKSPACE)
             def org_create=env.WORKSPACE+str2
             println(org_create)
-        
+            def mtt="env.WORKSPACE\sfdc.txt"
+            println(mtt)
             if(env.Create_scratch_org=="Yes")
             {    
              /*   

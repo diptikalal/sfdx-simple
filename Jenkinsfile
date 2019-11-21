@@ -79,7 +79,7 @@ node('master') {
                 set /p var11=<sfdc.txt
                 echo %var11%
                 set var12=var11
-               sfdx force:org:open --targetusername %var11%"
+               sfdx force:org:open --targetusername %var11%
                 '''
             }
         }

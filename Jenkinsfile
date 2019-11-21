@@ -7,7 +7,7 @@ node('master') {
     def BUILD_NUMBER=env.BUILD_NUMBER
     def RUN_ARTIFACT_DIR="${BUILD_NUMBER}"
     def SFDC_USERNAME
-    def var
+    def var11
 
     def str1=env.cmd_list_org
     def str2=env.cmd_create_org
@@ -73,12 +73,16 @@ node('master') {
             }
             else
             {
-                bat 'dir'
                 SFDC_USERNAME="mnd dipti"
+                println(SFDC_USERNAME)
+            extstr = null
+                bat "echo ${SFDC_USERNAME} > sfdc.txt"
+                
+                bat 'dir'
                 bat '''
-                set /p var=<sfdc.txt
+                set /p var11=<sfdc.txt
                 '''
-                println(var)
+                println(var11)
                 //bat "echo %var%"
             }
         }

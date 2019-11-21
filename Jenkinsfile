@@ -74,6 +74,7 @@ node('master') {
             else
             {
                 bat 'dir'
+                SFDC_USERNAME="mnd dipti"
                 bat '''
                 set /p var=<sfdc.txt
                 '''

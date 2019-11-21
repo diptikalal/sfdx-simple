@@ -86,19 +86,16 @@ node('master') {
                 echo %var11%
                 echo push to scratch org
                 sfdx force:source:push --targetusername %var11%
-                sfdx force:user:permset:assign --targetusername %var11% --permsetname DreamHouse
                 '''
-            }
-        
-        
-     /*stage('assign permission set') {
+     }
+     stage('assign permission set') {
 
                 bat 'dir'
                 bat '''
                 set /p var11=<sfdc.txt
                 echo %var11%
                 echo assign permission set 
-                force:user:permset:assign --targetusername %var11% --permsetname DreamHouse
+                sfdx force:user:permset:assign --targetusername %var11% --permsetname DreamHouse
               '''
      }
             //SFDC_USERNAME="test-1usebkhr6ilc@example.com"

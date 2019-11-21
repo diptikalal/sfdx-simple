@@ -73,7 +73,7 @@ node('master') {
             }
             else
             {
-                bat "set /p var=<'${env.WORKSPACE}\sfdc.txt'"
+                bat "set /p var=<"${env.WORKSPACE}\sfdc.txt""
                 println(var)
                 //bat "echo %var%"
             }

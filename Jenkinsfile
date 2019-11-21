@@ -78,7 +78,7 @@ node('master') {
                 bat '''
                 set /p var11=<sfdc.txt
                 echo %var11%
-                set var12=var11
+                var12=var11
                 '''
             println(var12)
 

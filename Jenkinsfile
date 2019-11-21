@@ -69,7 +69,7 @@ node('master') {
             SFDC_USERNAME="mnd dipti"
                 println(SFDC_USERNAME)
             extstr = null
-                bat 'echo "gdhgahjadj" > sfdc.txt'
+                bat "echo ${SFDC_USERNAME} > sfdc.txt"
             }
             else
             {

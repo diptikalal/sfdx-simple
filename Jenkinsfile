@@ -66,7 +66,7 @@ node('master') {
             println("sfdc_username")
             println(SFDC_USERNAME)
             extstr = null
-            def refernce_var=SFDC_USERNAME
+            refernce_var=SFDC_USERNAME
             }
             else
             {

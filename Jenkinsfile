@@ -48,8 +48,7 @@ node('master') {
             println(env.WORKSPACE)
             def org_create=env.WORKSPACE+str2
             println(org_create)
-            def mtt="env.WORKSPACE\sfdc.txt"
-            println(mtt)
+        
             if(env.Create_scratch_org=="Yes")
             {    
              /*   
@@ -74,7 +73,7 @@ node('master') {
             }
             else
             {
-                bat "set /p var=<"${env.WORKSPACE}\sfdc.txt""
+                bat "set /p var=<"{env.WORKSPACE}\sfdc.txt""
                 println(var)
                 //bat "echo %var%"
             }

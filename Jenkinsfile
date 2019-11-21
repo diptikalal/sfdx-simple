@@ -7,6 +7,7 @@ node('master') {
     def BUILD_NUMBER=env.BUILD_NUMBER
     def RUN_ARTIFACT_DIR="${BUILD_NUMBER}"
     def SFDC_USERNAME
+    def refernce_var
 
     def str1=env.cmd_list_org
     def str2=env.cmd_create_org
@@ -48,8 +49,10 @@ node('master') {
             def org_create=env.WORKSPACE+str2
             println(org_create)
         
+            if(env.Create_scratch_org=="Yes")
+            {    
             //to set the defaultdev hub username
-           /* rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
+            rm = bat returnStatus: true, script: "\"${toolbelt}\" force:config:set defaultdevhubusername=${HUB_ORG} --global"
         
             // to create the scratch org
             rmsg = bat returnStdout: true, script: "\"${toolbelt}\" force:org:create --definitionfile config/project-scratch-def.json --json --targetdevhubusername ${HUB_ORG} --setalias my-scratch-org"
@@ -63,27 +66,24 @@ node('master') {
             println("sfdc_username")
             println(SFDC_USERNAME)
             extstr = null
-            
-           SFDC_USERNAME="test-abpahx0nqcgv@example.com"
-          
-           rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install --package 04t1C000000Y1Qe --targetusername ${SFDC_USERNAME}"
-            println("health cloud")
-            println(rc)*/
-            
-           SFDC_USERNAME="test-abpahx0nqcgv@example.com"
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:package:install:report -i 04t1C000000Y1Qe -u ${SFDC_USERNAME}"
-           println(rc)
+            def refernce_var=SFDC_USERNAME
+            }
+            else
+            {
+            println(refernce_var)
+            }
         }
 
-       stage('Push To Test Org') {
+     /*  stage('Push To Test Org') {
+           def refernce_var=SFDC_USERNAME
             //SFDC_USERNAME="test-1usebkhr6ilc@example.com"
            // SFDC_USERNAME="test-dg82n9rshd96@example.com"
-            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${SFDC_USERNAME}"
+            rc = bat returnStatus: true, script: "\"${toolbelt}\" force:source:push --targetusername ${refernce_var}"
             if (rc != 0) {
                 error 'push failed'
             }
-            
-            rp = bat returnStatus: true, script: "\"${toolbelt}\" force:org:open --targetusername ${SFDC_USERNAME}"
+       }    
+            /*rp = bat returnStatus: true, script: "\"${toolbelt}\" force:org:open --targetusername ${SFDC_USERNAME}"
             // assign permset
             rc = bat returnStatus: true, script: "\"${toolbelt}\" force:user:permset:assign --targetusername ${SFDC_USERNAME} --permsetname DreamHouse"
             
@@ -109,7 +109,7 @@ node('master') {
         {
             SFDC_USERNAME="test-1usebkhr6ilc@example.com"
              del = bat returnStatus: true, script: "\"${toolbelt}\" force:org:delete --targetusername ${SFDC_USERNAME} --noprompt"
-        }    
+        }   */
             
         stage('collect results') {
             junit keepLongStdio: true, testResults: 'tests/**/*-junit.xml'

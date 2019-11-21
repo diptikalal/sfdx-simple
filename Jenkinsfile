@@ -73,14 +73,9 @@ node('master') {
             }
             else
             {
-                SFDC_USERNAME="mnd dipti"
-                println(SFDC_USERNAME)
-            extstr = null
-                bat "echo ${SFDC_USERNAME} > sfdc.txt"
-                
                 bat 'dir'
                 bat '''
-                set /p var11=<sfdc.txt
+                set /p "var11=<sfdc.txt"
                 '''
                 println(var11)
                 //bat "echo %var%"

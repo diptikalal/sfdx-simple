@@ -68,6 +68,8 @@ node('master') {
             println("sfdc_username")
             println(SFDC_USERNAME)
             //SFDC_USERNAME="mnd dipti"
+                
+            
            
             extstr = null
             bat "echo ${SFDC_USERNAME} > sfdc.txt"
